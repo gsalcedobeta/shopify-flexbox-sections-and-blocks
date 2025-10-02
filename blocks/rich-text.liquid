@@ -1,0 +1,70 @@
+{% style %}
+  #shopify-block-{{ block.id }} .richtext {
+    margin-bottom: {{ block.settings.margin_bottom }}px;
+    text-align: {{ block.settings.text_align }};
+  }
+  @media (max-width: 750px) { /* Mobile */
+    #shopify-block-{{ block.id }} .richtext {
+      margin-bottom: calc({{ block.settings.margin_bottom }}px / 2);
+      text-align: {{ block.settings.text_align_mobile }};
+    }
+  }
+{% endstyle %}
+
+<div class="richtext">
+  {{ block.settings.text }}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks.richtext.name",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:blocks.richtext.settings.text.label",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vulputate eros ipsum, quis fringilla lorem posuere vel. Vivamus rutrum nunc congue suscipit tincidunt. Ut at convallis nisi, nec finibus dolor. In ac auctor leo, eget viverra libero. Integer suscipit sit amet lorem at dignissim. Maecenas nec molestie tortor, at semper magna.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:blocks.richtext.settings.text_align.label",
+      "options": [
+        { "label": "t:blocks.richtext.settings.text_align.options.left", "value": "left" },
+        { "label": "t:blocks.richtext.settings.text_align.options.center", "value": "center" },
+        { "label": "t:blocks.richtext.settings.text_align.options.right", "value": "right" },
+        { "label": "t:blocks.richtext.settings.text_align.options.justify", "value": "justify" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "t:blocks.richtext.settings.margin_bottom.label",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.richtext.settings.mobile.header"
+    },
+    {
+      "type": "select",
+      "id": "text_align_mobile",
+      "label": "t:blocks.richtext.settings.text_align.label",
+      "options": [
+        { "label": "t:blocks.richtext.settings.text_align.options.left", "value": "left" },
+        { "label": "t:blocks.richtext.settings.text_align.options.center", "value": "center" },
+        { "label": "t:blocks.richtext.settings.text_align.options.right", "value": "right" }
+      ],
+      "default": "left"
+    }
+  ],
+  "presets": [
+    { "name": "t:blocks.richtext.presets.name" }
+  ]
+}
+{% endschema %}

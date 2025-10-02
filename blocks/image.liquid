@@ -1,0 +1,106 @@
+{% style %}
+  #shopify-block-{{ block.id }} img {
+    {% case block.settings.horizontal_align %}
+        {% when 'center' %}
+            margin-left: auto;
+            margin-right: auto;
+        {% when 'right' %}
+            margin-left: auto;
+            margin-right: 0;
+        {% else %}
+            margin-left: 0;
+            margin-right: auto;
+    {% endcase %}
+    margin-bottom: {{ block.settings.margin_bottom }}px;
+  }
+  @media (max-width: 750px) { /* Mobile */
+    #shopify-block-{{ block.id }} img {
+      margin-bottom: calc({{ block.settings.margin_bottom }}px / 2);
+      {% case block.settings.horizontal_align_mobile %}
+        {% when 'center' %}
+            margin-left: auto;
+            margin-right: auto;
+        {% when 'right' %}
+            margin-left: auto;
+            margin-right: 0;
+        {% else %}
+            margin-left: 0;
+            margin-right: auto;
+      {% endcase %}
+    }
+  }
+{% endstyle %}
+
+{%- assign image_size_2x = block.settings.width | times: 2 | at_most: 5760 -%}
+<img
+  srcset="{{ block.settings.image | image_url: width: block.settings.width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x"
+  src="{{ block.settings.image | image_url: width: 760 }}"
+  alt="{{ block.settings.alt | escape }}"
+  loading="lazy"
+  width="{{ block.settings.width }}"
+  height="auto"
+>
+
+{% schema %}
+{
+  "name": "t:blocks.image.name",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:blocks.image.settings.image.label"
+    },
+    {
+      "type": "text",
+      "id": "alt",
+      "label": "t:blocks.image.settings.alt.label"
+    },
+    {
+      "type": "number",
+      "id": "width",
+      "label": "t:blocks.image.settings.width.label",
+      "default": 300
+    },
+    {
+      "type": "select",
+      "id": "horizontal_align",
+      "label": "t:blocks.image.settings.horizontal_align.label",
+      "options": [
+        { "value": "left", "label": "t:blocks.image.settings.horizontal_align.options.left" },
+        { "value": "center", "label": "t:blocks.image.settings.horizontal_align.options.center" },
+        { "value": "right", "label": "t:blocks.image.settings.horizontal_align.options.right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "t:blocks.image.settings.margin_bottom.label",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.image.settings.mobile.header"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_align_mobile",
+      "label": "t:blocks.image.settings.horizontal_align.label",
+      "options": [
+        { "value": "left", "label": "t:blocks.image.settings.horizontal_align.options.left" },
+        { "value": "center", "label": "t:blocks.image.settings.horizontal_align.options.center" },
+        { "value": "right", "label": "t:blocks.image.settings.horizontal_align.options.right" }
+      ],
+      "default": "left"
+    }
+  ],
+  "presets": [
+    { "name": "t:blocks.image.presets.name" }
+  ]
+}
+{% endschema %}
+

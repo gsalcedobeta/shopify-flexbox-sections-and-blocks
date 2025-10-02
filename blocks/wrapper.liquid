@@ -1,0 +1,76 @@
+{% style %}
+  #shopify-block-{{ block.id }} .wrapper {
+    flex-direction: {{ block.settings.flex_direction }};
+    align-items: {{ block.settings.align_items }};
+    gap: {{ block.settings.gap }}px;
+  }
+  @media (max-width: 750px) { /* Mobile */
+    #shopify-block-{{ block.id }} .wrapper {
+      flex-direction: {{ block.settings.flex_direction_mobile }} !important;
+      gap: calc({{ block.settings.gap }}px / 2);
+    }
+  }
+{% endstyle %}
+
+<div class="wrapper">
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "t:blocks.wrapper.name",
+  "blocks": [{ "type": "container" }],
+  "settings": [
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:blocks.wrapper.settings.gap.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "flex_direction",
+      "label": "t:blocks.wrapper.settings.flex_direction.label",
+      "options": [
+        { "label": "t:blocks.wrapper.settings.flex_direction.options.column", "value": "column" },
+        { "label": "t:blocks.wrapper.settings.flex_direction.options.row", "value": "row" }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "select",
+      "id": "align_items",
+      "label": "t:blocks.wrapper.settings.align_items.label",
+      "options": [
+        { "label": "t:blocks.wrapper.settings.align_items.options.default", "value": "stretch" },
+        { "label": "t:blocks.wrapper.settings.align_items.options.top", "value": "flex-start" },
+        { "label": "t:blocks.wrapper.settings.align_items.options.bottom", "value": "flex-end" },
+        { "label": "t:blocks.wrapper.settings.align_items.options.center", "value": "center" }
+      ],
+      "default": "stretch"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.wrapper.settings.mobile.header"
+    },
+    {
+      "type": "select",
+      "id": "flex_direction_mobile",
+      "label": "t:blocks.wrapper.settings.flex_direction_mobile.label",
+      "options": [
+        { "label": "t:blocks.wrapper.settings.flex_direction_mobile.options.normal", "value": "column" },
+        { "label": "t:blocks.wrapper.settings.flex_direction_mobile.options.reverse", "value": "column-reverse" }
+      ],
+      "default": "column"
+    }
+  ],
+  "presets": [
+    { "name": "t:blocks.wrapper.presets.name" }
+  ]
+}
+{% endschema %}
+

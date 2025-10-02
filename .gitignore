@@ -1,0 +1,24 @@
+# OS / Editors
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Node / tooling
+node_modules/
+.pnp.*
+.npmrc
+.yarn/*
+!.yarn/versions
+dist/
+build/
+.cache/
+.sass-cache/
+
+# Shopify CLI / theme
+.shopify/
+.shopify-cli.yml
+# env/keys
+.env
+.env.*

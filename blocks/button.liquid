@@ -1,0 +1,138 @@
+{% style %}
+  #shopify-block-{{ block.id }} .button {
+    {% case block.settings.button_align %}
+        {% when 'center' %}
+            margin-left: auto;
+            margin-right: auto;
+        {% when 'right' %}
+            margin-left: auto;
+            margin-right: 0;
+        {% else %}
+            margin-left: 0;
+            margin-right: auto;
+    {% endcase %}
+    margin-bottom: {{ block.settings.margin_bottom }}px;
+    width: {{ block.settings.button_width }};
+  }
+  @media (max-width: 750px) { /* Mobile */
+    #shopify-block-{{ block.id }} .button {
+      margin-bottom: calc({{ block.settings.margin_bottom }}px / 2);
+      {% case block.settings.button_align_mobile %}
+        {% when 'center' %}
+            margin-left: auto;
+            margin-right: auto;
+        {% when 'right' %}
+            margin-left: auto;
+            margin-right: 0;
+        {% else %}
+            margin-left: 0;
+            margin-right: auto;
+      {% endcase %}
+    }
+  }
+{% endstyle %}
+
+<a class="button button--{{ block.settings.button_style }}" target="{{ block.settings.button_target }}" href="{{ block.settings.button_url }}">
+  {{ block.settings.button_text }}
+</a>
+
+{% schema %}
+{
+  "name": "t:blocks.button.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:blocks.button.settings.button_text.label",
+      "default": "Button"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "t:blocks.button.settings.button_url.label"
+    },
+    {
+      "type": "select",
+      "id": "button_target",
+      "label": "t:blocks.button.settings.button_target.label",
+      "options": [
+        { "value": "_self", "label": "t:blocks.button.settings.button_target.options.self" },
+        { "value": "_blank", "label": "t:blocks.button.settings.button_target.options.blank" },
+        { "value": "_parent", "label": "t:blocks.button.settings.button_target.options.parent" },
+        { "value": "_top", "label": "t:blocks.button.settings.button_target.options.top" }
+      ],
+      "default": "_self"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:blocks.button.settings.button_style.label",
+      "options": [
+        { "value": "primary", "label": "t:blocks.button.settings.button_style.options.primary" },
+        { "value": "secondary", "label": "t:blocks.button.settings.button_style.options.secondary" }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "select",
+      "id": "button_width",
+      "label": "t:blocks.button.settings.button_width.label",
+      "options": [
+        { "value": "auto", "label": "t:blocks.button.settings.button_width.options.default" },
+        { "value": "max-content", "label": "t:blocks.button.settings.button_width.options.content" },
+        { "value": "100%", "label": "t:blocks.button.settings.button_width.options.fullwidth" }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "select",
+      "id": "button_align",
+      "label": "t:blocks.button.settings.button_align.label",
+      "options": [
+        { "value": "left", "label": "t:blocks.button.settings.button_align.options.left" },
+        { "value": "center", "label": "t:blocks.button.settings.button_align.options.center" },
+        { "value": "right", "label": "t:blocks.button.settings.button_align.options.right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "t:blocks.button.settings.margin_top.label",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "t:blocks.button.settings.margin_bottom.label",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:blocks.button.settings.mobile.header"
+    },
+    {
+      "type": "select",
+      "id": "button_align_mobile",
+      "label": "t:blocks.button.settings.button_align.label",
+      "options": [
+        { "value": "left", "label": "t:blocks.button.settings.button_align.options.left" },
+        { "value": "center", "label": "t:blocks.button.settings.button_align.options.center" },
+        { "value": "right", "label": "t:blocks.button.settings.button_align.options.right" }
+      ],
+      "default": "left"
+    }
+  ],
+  "presets": [
+    { "name": "t:blocks.button.presets.name" }
+  ]
+}
+{% endschema %}

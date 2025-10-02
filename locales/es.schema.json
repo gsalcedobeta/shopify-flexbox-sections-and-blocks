@@ -1,0 +1,186 @@
+{
+  "sections": {
+    "section_flexbox": {
+      "name": "Sección Flexbox",
+      "presets": { "name": "Sección Flexbox" },
+      "settings": {
+        "styles": { "header": "Estilos" },
+        "background_color": { "label": "Color de fondo" },
+        "background_image": { "label": "Imagen de fondo" },
+        "background_size": {
+          "label": "Tamaño de fondo",
+          "options": {
+            "auto": "auto",
+            "contain": "contener",
+            "cover": "cubrir"
+          }
+        },
+        "background_repeat": {
+          "label": "Repetición de fondo",
+          "options": {
+            "no_repeat": "no repetir",
+            "repeat": "repetir",
+            "repeat_x": "repetir en X",
+            "repeat_y": "repetir en Y"
+          }
+        },
+        "background_position_x": { "label": "Posición de fondo X" },
+        "background_position_y": { "label": "Posición de fondo Y" },
+        "fullwidth": { "label": "Ancho completo" },
+        "gap": { "label": "Espacio (gap)" },
+        "padding_top": { "label": "Relleno superior" },
+        "padding_bottom": { "label": "Relleno inferior" },
+        "custom_css": { "header": "CSS personalizado" },
+        "css_id": { "label": "ID de CSS" },
+        "css_class": { "label": "Clases de CSS" }
+      }
+    }
+  },
+  "blocks": {
+    "wrapper": {
+      "name": "Wrapper",
+      "presets": { "name": "Wrapper" },
+      "settings": {
+        "gap": { "label": "Espacio (gap)" },
+        "flex_direction": {
+          "label": "Dirección de flex",
+          "options": {
+            "column": "columna",
+            "row": "fila"
+          }
+        },
+        "align_items": {
+          "label": "Alinear elementos",
+          "options": {
+            "default": "predeterminado",
+            "top": "arriba",
+            "bottom": "abajo",
+            "center": "centro"
+          }
+        },
+        "mobile": { "header": "Móvil" },
+        "flex_direction_mobile": {
+          "label": "Dirección de flex",
+          "options": {
+            "normal": "normal",
+            "reverse": "invertida"
+          }
+        }
+      }
+    },
+    "container": {
+      "name": "Contenedor",
+      "presets": { "name": "Contenedor" },
+      "settings": {
+        "width": { "label": "Ancho" },
+        "max_width": { "label": "Ancho máximo" },
+        "background_color": { "label": "Color de fondo" },
+        "border_radius": { "label": "Radio de borde" },
+        "gap": { "label": "Espacio (gap)" },
+        "padding_vertical": { "label": "Relleno vertical" },
+        "padding_horizontal": { "label": "Relleno horizontal" },
+        "flex_direction": {
+          "label": "Dirección de flex",
+          "options": {
+            "column": "columna",
+            "row": "fila"
+          }
+        },
+        "custom_css": { "header": "CSS personalizado" },
+        "css_id": { "label": "ID de CSS" },
+        "css_class": { "label": "Clases de CSS" }
+      }
+    },
+    "richtext": {
+      "name": "Texto",
+      "presets": { "name": "Texto" },
+      "settings": {
+        "text": { "label": "Texto" },
+        "text_align": {
+          "label": "Alineación de texto",
+          "options": { "left": "izquierda", "center": "centro", "right": "derecha", "justify": "justificar" }
+        },
+        "margin_bottom": { "label": "Margen inferior" },
+        "mobile": { "header": "Móvil" }
+      }
+    },
+    "image": {
+      "name": "Imagen",
+      "presets": { "name": "Imagen" },
+      "settings": {
+        "image": { "label": "Imagen" },
+        "alt": { "label": "Texto alternativo" },
+        "width": { "label": "Ancho" },
+        "horizontal_align": {
+          "label": "Alinear",
+          "options": { "left": "izquierda", "center": "centro", "right": "derecha" }
+        },
+        "margin_bottom": { "label": "Margen inferior" },
+        "mobile": { "header": "Móvil" }
+      }
+    },
+    "hr": {
+      "name": "Separador",
+      "presets": { "name": "Separador" },
+      "settings": {
+        "border_style": {
+          "label": "Estilo",
+          "options": { "solid": "sólido", "dotted": "punteado", "dashed": "discontinuo" }
+        },
+        "height": { "label": "Alto" },
+        "width": { "label": "Ancho" },
+        "margin_top": { "label": "Margen superior" },
+        "margin_bottom": { "label": "Margen inferior" }
+      }
+    },
+    "heading": {
+      "name": "Encabezado",
+      "presets": { "name": "Encabezado" },
+      "settings": {
+        "heading": { "label": "Encabezado" },
+        "tag": {
+          "label": "Etiqueta",
+          "options": { "h1": "h1", "h2": "h2", "h3": "h3", "h4": "h4", "h5": "h5", "h6": "h6", "span": "span" }
+        },
+        "text_align": {
+          "label": "Alineación de texto",
+          "options": { "left": "izquierda", "center": "centro", "right": "derecha" }
+        },
+        "margin_bottom": { "label": "Margen inferior" },
+        "mobile": { "header": "Móvil" }
+      }
+    },
+    "button": {
+      "name": "Botón",
+      "presets": { "name": "Botón" },
+      "settings": {
+        "button_text": { "label": "Texto" },
+        "button_url": { "label": "URL" },
+        "button_target": {
+          "label": "Destino",
+          "options": {
+            "self": "Misma pestaña",
+            "blank": "Nueva pestaña/ventana",
+            "parent": "Marco padre (iframe)",
+            "top": "Ventana superior (salir de iframe)"
+          }
+        },
+        "button_style": {
+          "label": "Estilo",
+          "options": { "primary": "primario", "secondary": "secundario" }
+        },
+        "button_width": {
+          "label": "Ancho",
+          "options": { "default": "predeterminado", "content": "ajustado al contenido", "fullwidth": "ancho completo" }
+        },
+        "button_align": {
+          "label": "Alinear",
+          "options": { "left": "izquierda", "center": "centro", "right": "derecha" }
+        },
+        "margin_top": { "label": "Margen superior" },
+        "margin_bottom": { "label": "Margen inferior" },
+        "mobile": { "header": "Móvil" }
+      }
+    }
+  }
+}

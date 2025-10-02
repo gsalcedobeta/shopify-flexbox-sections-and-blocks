@@ -1,0 +1,136 @@
+{% style %}
+  #shopify-block-{{ block.id }} {
+    width: {{ block.settings.width }}%;
+    {% if block.settings.max_width != blank %}
+      max-width: {{ block.settings.max_width }}px;
+    {% endif %}
+  }
+  #shopify-block-{{ block.id }} .container {
+    padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;
+    border-radius: {{ block.settings.border_radius }}px;
+    flex-direction: {{ block.settings.flex_direction }};
+    {% if block.settings.background_color != blank %}
+      background: {{ block.settings.background_color }};
+    {% endif %}
+    gap: {{ block.settings.gap }}px;
+  }
+  @media (max-width: 750px) { /* Mobile */
+    #shopify-block-{{ block.id }} .container {
+      padding: calc({{ block.settings.padding_vertical }}px / 2) calc({{ block.settings.padding_horizontal }}px / 2);
+      gap: calc({{ block.settings.gap }}px / 2);
+    }
+  }
+{% endstyle %}
+
+<div
+  {% if block.settings.css_id %}
+    id="{{ block.settings.css_id }}"
+  {% endif -%}
+  class="container color-{{ block.settings.color_scheme }}{% if block.settings.css_class %} {{ block.settings.css_class }}{% endif %}"
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Container",
+  "blocks": [{ "type": "@theme" }, { "type": "@app" }],
+  "settings": [
+    {
+      "type": "range",
+      "id": "width",
+      "label": "Width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "number",
+      "id": "max_width",
+      "label": "Max width"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background color"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "flex_direction",
+      "label": "Flex direction",
+      "options": [
+        { "label": "column", "value": "column" },
+        { "label": "row", "value": "row" }
+      ],
+      "default": "column"
+    },
+    {
+      "type": "header",
+      "content": "Custom CSS"
+    },
+    {
+      "type": "text",
+      "id": "css_id",
+      "label": "CSS ID"
+    },
+    {
+      "type": "text",
+      "id": "css_class",
+      "label": "CSS Classes"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Container"
+    }
+  ]
+}
+{% endschema %}
