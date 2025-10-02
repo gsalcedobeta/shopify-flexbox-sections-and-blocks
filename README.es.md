@@ -5,23 +5,29 @@ Sección flexible basada en Flexbox con bloques modulares e i18n EN/ES. Funciona
 **English** → [README.md](./README.md)
 
 ## Características
-- Sección: `Section Flexbox` (`sections/section-flexbox.liquid`)
+- Sección: `Section Flexbox` (`sections/custom-flexbox.liquid`)
 - Bloques: `wrapper`, `container`, `heading`, `richtext`, `image`, `button`, `hr`
 - Namespaces i18n: `t:sections.section_flexbox.*` y `t:blocks.*` (EN/ES incluidos)
 - Compatible con esquemas de color (Dawn) y portable a otros temas
 
 ## Instalación
 1. Copia los archivos en tu tema:
-   - `sections/section-flexbox.liquid`
+   - `sections/custom-flexbox.liquid`
    - `blocks/*.liquid`
    - `locales/en.default.json` y `locales/es.json` (haz merge si ya tienes locales)
 
-2. **Dawn**: funciona tal cual.  
-   **Otros temas**: añade variables CSS y settings para esquemas de color:
-   - Agrega el loop de variables CSS de **[docs/snippets/color-schemes.liquid](./docs/snippets/color-schemes.liquid)** dentro del `<style>` raíz de `theme.liquid`.
-   - Agrega el grupo de colores de **[docs/snippets/settings_schema-colors.json](./docs/snippets/settings_schema-colors.json)** en `config/settings_schema.json`.
+2. Estilos globales  
+   - **Dawn**: pega el CSS en `assets/base.css` (este repo ya trae el contenido en `assets/base.css`).
+   - **Otros temas**: pega el mismo CSS en tu hoja principal (ej. `assets/theme.css`) o súbelo como archivo separado e inclúyelo en `theme.liquid`:
+     ```liquid
+     {{ 'theme.css' | asset_url | stylesheet_tag }}
+     {{ 'global-flexbox.css' | asset_url | stylesheet_tag }} {# si decides llevarlo separado #}
+     ```
 
-3. Abre el Editor de temas → agrega **Section Flexbox** → inserta los bloques que necesites.
+3. **Dawn** funciona tal cual.  
+   **Otros temas**: si tu tema no maneja variables para “color schemes”, porta la lógica de Dawn (puedes copiarla de Dawn o del ejemplo del README anterior que dejamos como referencia).
+
+4. Abre el Editor de temas → agrega **Section Flexbox** → inserta los bloques que necesites.
 
 ## Consejos
 - `Wrapper`: dirección de flex, gap y alineación (con variante móvil).
