@@ -35,8 +35,11 @@ Composable Flexbox section for Shopify with modular blocks and EN/ES localizatio
 - The section exposes background image, repeat/size/position, gap and paddings.
 - All labels/options are localized via `t:blocks.*` and `t:sections.section_flexbox.*`.
 
+## Localization
+- English: `locales/en.json`
+- Spanish: `locales/es.json`
+
 ## Screenshots
-Place your screenshots in `docs/screenshots/` and embed them here, for example:
 <p align="center">
 <img width="1617" height="855" alt="image" src="https://github.com/user-attachments/assets/45e307dd-b510-4ee9-889f-3737ccbaf419" />
 </p>
@@ -46,10 +49,6 @@ Place your screenshots in `docs/screenshots/` and embed them here, for example:
 <p align="center">
 <img width="1905" height="850" alt="image" src="https://github.com/user-attachments/assets/e8596d5c-bcd9-4125-b7f0-46edeab44df9" />
 </p>
-
-## Localization
-- English: `locales/en.json`
-- Spanish: `locales/es.json`
 
 ## License
 MIT — see [`LICENSE`](./LICENSE).
